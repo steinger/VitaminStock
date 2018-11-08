@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
-      <div class="medium-12 large-12 columns">
-        <h4>{{__('Available products')}}</h4>
-        <table class="stack">
+<div class="grid-container">
+  <h4>{{__('Available products')}}</h4>
+      <div class="grid-x grid-margin-x">
+        <table>
           <thead>
             <tr>
-              <th width="200">{{__('Product')}}</th>
-              <th width="200">Stock</th>
-              <th width="200">{{__('Action')}}</th>
+              <th>{{__('Product')}}</th>
+              <th>Stock</th>
+              <th>{{__('Action')}}</th>
             </tr>
           </thead>
           <tbody>

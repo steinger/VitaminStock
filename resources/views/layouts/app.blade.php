@@ -16,41 +16,29 @@
 
         <!-- Start Top Bar -->
         <div class="top-bar">
-          <div class="row">
-            <div class="top-bar-left">
-              <ul class="dropdown menu" data-dropdown-menu="tckp8q-dropdown-menu" role="menubar">
-                <li role="menuitem"><a href="{{ route('dashboard') }}">Home</a></li>
-                <li role="menuitem"><a href="{{ route('products') }}">{{__('Products')}}</a></li>
-                <li role="menuitem"><a href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                               Logout
-                                           </a>
+          <ul class="menu">
+            <li><a href="{{ route('dashboard') }}">Home</a></li>
+            <li><a href="{{ route('products') }}">{{__('Products')}}</a></li>
+            <li><a href="{{ route('logout') }}"
+                         onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                         Logout
+                     </a>
 
-                                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                               {{ csrf_field() }}
-                                           </form></li>
-              </ul>
-            </div>
-          </div>
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                         {{ csrf_field() }}
+                     </form></li>
+          </ul>
         </div>
         <!-- End Top Bar -->
 
 @yield('content')
 
-        <div class="column column">
-          <hr>
-          <ul class="menu align-right">
-            <li class="float-right">Copyright 2018</li>
-          </ul>
-        </div>
-            <script src="{{ asset('js/vendor/jquery.js') }}"></script>
-            <script src="{{ asset('js/vendor/what-input.js') }}"></script>
-            <script src="{{ asset('js/vendor/foundation.js') }}"></script>
-            <script src="{{ asset('js/app.js') }}"></script>
-            <script>
-              $(document).foundation();
-            </script>
-        <br>
+        <script src="{{ asset('js/vendor/what-input.js') }}"></script>
+        <script src="{{ asset('js/vendor/foundation.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script>
+          $(document).foundation();
+        </script>
     </body>
 </html>
