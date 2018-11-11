@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $data = [];
-        $data['products'] = $this->product->all();
+        $data['products'] = $this->product->all()->sortBy("name");;
         return view('products/index', $data);
     }
 
@@ -44,7 +44,7 @@ class ProductController extends Controller
                 $request,
                 [
                     'name' => 'required|min:3',
-                    'stock' => 'numeric|min:1|max:200',
+                    'stock' => 'numeric|min:0|max:200',
                     'description' => 'required|min:1',
                 ]
             );
@@ -84,7 +84,7 @@ class ProductController extends Controller
                 $request,
                 [
                     'name' => 'required|min:3',
-                    'stock' => 'numeric|min:1|max:200',
+                    'stock' => 'numeric|min:0|max:200',
                     'description' => 'required|min:1',
                 ]
             );
