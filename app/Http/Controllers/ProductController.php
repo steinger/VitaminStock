@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $data = [];
-        $data['products'] = $this->product->all()->sortBy("name");;
+        $data['products'] = $this->product->all()->sortBy("name");
         return view('products/index', $data);
     }
 
@@ -24,7 +24,7 @@ class ProductController extends Controller
     {
         $data = [];
 
-        $data['products'] = $this->product->all();
+        $data['products'] = $this->product->all()->sortBy("name");
         header('Content-Disposition: attachment;filename=export.xls');
         return view('products/export', $data);
     }
