@@ -16,7 +16,7 @@ class ContentsController extends Controller
     public function home()
     {
         $data = [];
-        $data['products'] = $this->product->all()->sortBy("name");
+        $data['products'] = $this->product->all()->where('stock' , '>',  0)->sortBy("name");
         return view('contents/home', $data);
     }
 

@@ -21,10 +21,8 @@
                   <td>
                   @if ($product->stock > 10)
                     <a class="hollow button" href="{{ route('debit', ['product_id' => $product->id ]) }}">{{__('Debit')}}</a>
-                  @elseif ($product->stock > 0)
-                    <a class="hollow button warning" href="{{ route('debit', ['product_id' => $product->id ]) }}">{{__('Debit')}}</a>
                   @else
-                    <button class="hollow button alert" href="#">{{__('Order')}}</button>
+                    <a class="hollow button warning" href="{{ route('debit', ['product_id' => $product->id ]) }}">{{__('Debit')}}</a>
                   @endif
                   </td>
                 </tr>
