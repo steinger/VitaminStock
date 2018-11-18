@@ -4,9 +4,9 @@
 <table>
   <thead>
     <tr>
-      <th width="100">{{__('Product')}}</th>
-      <th width="50">Stock</th>
-      <th width="200">{{__('Description')}}</th>
+      <th width="200">{{__('Product')}}</th>
+      <th width="100">Stock</th>
+      <th width="400">{{__('Description')}}</th>
     </tr>
   </thead>
   <tbody>
