@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product as Product;
+use App\Activity as Activity;
+use Auth as Auth;
 
 class ContentsController extends Controller
 {
@@ -26,6 +28,10 @@ class ContentsController extends Controller
         $data->decrement('stock');
         // dd($data);
         $data->save();
+        $activity = new Activity;
+        $activity->user_id = Auth::id();
+        $activity->product_id = $product_id;
+        $activity->save();
         return redirect('/');
     }
 

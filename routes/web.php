@@ -20,13 +20,17 @@ Route::middleware('auth')->group( function() {
   Route::post('/products/new', 'ProductController@newProduct')->name('create_product');
   Route::get('/products/{product_id}', 'ProductController@show')->name('show_product');
   Route::post('/products/{product_id}', 'ProductController@modify')->name('update_product');
+  Route::get('/activity', 'ActivityController@index')->name('activity');
+  Route::get('/activity/delete/{activity_id}', 'ActivityController@delete')->name('delete');
+  Route::get('/activity/today', 'ActivityController@today')->name('today_activity');
+  Route::get('/activity/overview', 'ActivityController@overview')->name('overview_activity');
 
   Route::get('export', 'ProductController@export');
 });
 
 Route::get('/home', function () {
     $data = [];
-    $data['version'] = '0.0.3';
+    $data['version'] = '1.0.0';
     return view('welcome', $data);
 });
 

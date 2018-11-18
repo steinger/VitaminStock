@@ -19,6 +19,7 @@
           <ul class="menu">
             <li><a href="{{ route('dashboard') }}">Home</a></li>
             <li><a href="{{ route('products') }}">{{__('Products')}}</a></li>
+            <li><a href="{{ route('activity') }}">{{__('Activity')}}</a></li>
             <li><a href="{{ route('logout') }}"
                          onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
