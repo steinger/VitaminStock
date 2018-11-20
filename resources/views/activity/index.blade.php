@@ -11,7 +11,7 @@
       <thead>
         <tr>
           <th>{{__('Name')}}</th>
-          <th>{{__('Timestamp')}}</th>
+          <th>{{__('Created on')}}</th>
           <th>{{__('Action')}}</th>
         </tr>
       </thead>
@@ -19,7 +19,7 @@
         @foreach( $activities as $activity )
             <tr>
               <td>{{ $activity->name }}</td>
-              <td>{{ $activity->created_at }}</td>
+              <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->created_at)->diffForHumans() }}</td>
               <td>
                 <a class="hollow button" href="{{ route('delete', ['activity_id' => $activity->id ]) }}">{{__('Delete')}}</a>
               </td>

@@ -10,7 +10,8 @@
         <tr>
           <th>{{__('Name')}}</th>
           <th>{{__('Count')}}</th>
-          <th>{{__('First Date')}}</th>
+          <th>{{__('Modified')}}</th>
+          <th>{{__('Created')}}</th>
         </tr>
       </thead>
       <tbody>
@@ -18,7 +19,8 @@
             <tr>
               <td>{{ $activity->name }}</td>
               <td>{{ $activity->count }}</td>
-              <td>{{ $activity->created_at }}</td>
+              <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->updated_at)->diffForHumans() }}</td>
+              <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->created_at)->diffForHumans() }}</td>
             </tr>
         @endforeach
 

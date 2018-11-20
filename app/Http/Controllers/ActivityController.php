@@ -63,13 +63,13 @@ class ActivityController extends Controller
     {
       $data = [];
       $data = DB::table('activities')
-        ->select(['products.name', DB::raw('count(activities.product_id) AS count'), DB::raw('MIN(activities.created_at) AS created_at')])
+        ->select(['products.name', DB::raw('count(activities.product_id) AS count'), DB::raw('MIN(activities.created_at) AS created_at'), DB::raw('MAX(activities.created_at) AS updated_at')])
         ->leftJoin('products', 'products.id', '=', 'activities.product_id')
         ->groupBy('products.name')
         ->orderBy('products.name')
         ->where('user_id',Auth::id())
         ->get();
       // dd($data);
-      return view('activity/overview', ['activities' => $data, 'title'=> 'sum']);
+      return view('activity/overview', ['activities' => $data]);
     }
 }
