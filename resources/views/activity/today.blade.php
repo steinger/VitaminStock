@@ -14,14 +14,20 @@
         </tr>
       </thead>
       <tbody>
+        <?php $number = 0; ?>
         @foreach( $activities as $activity )
             <tr>
               <td>{{ $activity->name }}</td>
               <td>{{ $activity->count }}</td>
               <td> {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->created_at)->diffForHumans() }}</td>
             </tr>
+            <?php $number += $activity->count ?>
         @endforeach
-
+        @if ($number > 5)
+        <td><strong>{{__('Total')}}</strong></td>
+        <td><strong>{{ $number }}</strong></td>
+        <td></td>
+        @endif
       </tbody>
     </table>
 
