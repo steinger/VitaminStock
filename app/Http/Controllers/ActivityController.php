@@ -26,7 +26,7 @@ class ActivityController extends Controller
           ->orderByDesc('activities.created_at')
           ->where('user_id',Auth::id())
           ->offset(0)
-          ->limit(50)
+          ->limit(100)
           ->get();
         // dd($data);
         return view('activity/index', ['activities' => $data]);
