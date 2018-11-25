@@ -36,6 +36,7 @@
 
 @yield('content')
 
+        <script src="{{ asset('js/vendor/jquery.js') }}"></script>
         <script src="{{ asset('js/vendor/what-input.js') }}"></script>
         <script src="{{ asset('js/vendor/foundation.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
