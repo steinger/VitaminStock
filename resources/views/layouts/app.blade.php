@@ -9,8 +9,8 @@
         <!-- Fonts -->
         <link rel="icon" type="image/x-icon" href="favicon.ico" />
         <link rel="apple-touch-icon-precomposed" href="images/apple-icon.png" />
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/foundation.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <meta class="foundation-mq">
     </head>
     <body>
