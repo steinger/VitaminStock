@@ -2,3 +2,9 @@
 {
     color: red;
 }
+
+.tooltip-1
+{
+  border-bottom: none;
+  font-weight: normal;
+}
