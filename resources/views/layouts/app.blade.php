@@ -7,8 +7,8 @@
 
         <title>{{__('Vitamin Stock app')}}</title>
         <!-- Fonts -->
-        <link rel="icon" type="image/x-icon" href="favicon.ico" />
-        <link rel="apple-touch-icon-precomposed" href="images/apple-icon.png" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="apple-touch-icon-precomposed" href="{{ asset('images/apple-icon.png') }}" />
         <link rel="stylesheet" href="{{ asset('css/foundation.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <meta class="foundation-mq">
