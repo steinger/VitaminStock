@@ -30,7 +30,7 @@ Route::middleware('auth')->group( function() {
 
 Route::get('/home', function () {
     $data = [];
-    $data['version'] = '1.1.0';
+    $data['version'] = '1.1.1';
     return view('welcome', $data);
 });
 
