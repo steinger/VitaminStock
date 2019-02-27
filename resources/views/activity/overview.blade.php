@@ -19,8 +19,8 @@
             <tr>
               <td>{{ $activity->name }}</td>
               <td>{{ $activity->count }}</td>
-              <td><span data-tooltip class="tooltip-1" tabindex="2" title="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->updated_at)->formatLocalized('%e. %B %Y %H:%M')}}">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->updated_at)->diffForHumans() }}</span></td>
-              <td><span data-tooltip class="tooltip-1" tabindex="2" title="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->created_at)->formatLocalized('%e. %B %Y %H:%M')}}">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->created_at)->diffForHumans() }}</span></td>
+              <td><span data-tooltip class="tooltip-1" tabindex="2" title="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->updated_at)->isoFormat('LLL')}}">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->updated_at)->diffForHumans() }}</span></td>
+              <td><span data-tooltip class="tooltip-1" tabindex="2" title="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->created_at)->isoFormat('LLL')}}">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->created_at)->diffForHumans() }}</span></td>
             </tr>
         @endforeach
 
