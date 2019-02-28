@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="grid-container">
-    <h4>{{__('Today')}} {{ date('d.m')}}</h4>
+    <h4>{{__('Today')}} - {{\Carbon\Carbon::now()->isoFormat('dd, Do MMM YYYY')}}</h4>
 
     <div class="grid-x grid-margin-x">
     <table>
