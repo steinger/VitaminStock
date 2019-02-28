@@ -17,7 +17,7 @@
       <tbody>
         @foreach( $activities as $activity )
             <tr>
-              <td>{{ $activity->name }}</td>
+              <td><a href="{{ route('singlelist_activity', ['id' => $activity->id ]) }}">{{ $activity->name }}</a></td>
               <td>{{ $activity->count }}</td>
               <td><span data-tooltip class="tooltip-1" tabindex="2" title="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->updated_at)->isoFormat('LLL')}}">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->updated_at)->diffForHumans() }}</span></td>
               <td><span data-tooltip class="tooltip-1" tabindex="2" title="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->created_at)->isoFormat('LLL')}}">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->created_at)->diffForHumans() }}</span></td>

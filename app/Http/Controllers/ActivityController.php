@@ -12,9 +12,10 @@ use Carbon\Carbon;
 class ActivityController extends Controller
 {
     //
-    public function __construct( Activity $activity )
+    public function __construct( Activity $activity, Product $product )
     {
         $this->activity = $activity;
+        $this->product = $product;
     }
 
     public function index()
@@ -63,13 +64,22 @@ class ActivityController extends Controller
     {
       $data = [];
       $data = DB::table('activities')
-        ->select(['products.name', DB::raw('count(activities.product_id) AS count'), DB::raw('MIN(activities.created_at) AS created_at'), DB::raw('MAX(activities.created_at) AS updated_at')])
+        ->select(['products.id','products.name', DB::raw('count(activities.product_id) AS count'), DB::raw('MIN(activities.created_at) AS created_at'), DB::raw('MAX(activities.created_at) AS updated_at')])
         ->leftJoin('products', 'products.id', '=', 'activities.product_id')
-        ->groupBy('products.name')
+        ->groupBy('products.name','products.id')
         ->orderBy('products.name')
         ->where('user_id',Auth::id())
         ->get();
       // dd($data);
       return view('activity/overview', ['activities' => $data]);
+    }
+
+    public function list($id)
+    {
+      $data = [];
+      $data = $this->activity->where('user_id', Auth::id())->where('product_id', $id)->orderByDesc('created_at')->offset(0)->limit(100)->get();
+      $product = $this->product->find($id);
+      // dd($data);
+      return view('activity/singlelist')->with(array('activities' => $data))->with('productname', $product->name);
     }
 }
