@@ -21,7 +21,7 @@
               <td>{{ $activity->name }}</td>
               <td><span data-tooltip class="tooltip-1" tabindex="2" title="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->created_at)->isoFormat('LLL')}}">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->created_at)->diffForHumans() }}</span></td>
               <td>
-                <a class="hollow button" href="{{ route('delete', ['activity_id' => $activity->id ]) }}">{{__('Delete')}}</a>
+                <a class="hollow button alert" href="{{ route('delete', ['activity_id' => $activity->id ]) }}">{{__('Delete')}}</a>
               </td>
             </tr>
         @endforeach
