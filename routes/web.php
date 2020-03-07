@@ -24,7 +24,7 @@ Route::middleware('auth')->group( function() {
   Route::get('/activity/delete/{activity_id}', 'ActivityController@delete')->name('delete');
   Route::get('/activity/today', 'ActivityController@today')->name('today_activity');
   Route::get('/activity/overview', 'ActivityController@overview')->name('overview_activity');
-  Route::get('/activity/list/{product_id}', 'ActivityController@list')->name('singlelist_activity');
+  Route::get('/activity/list/{id}', 'ActivityController@list')->name('singlelist_activity');
 
   Route::get('export', 'ProductController@export');
 });
