@@ -29,11 +29,6 @@ Route::middleware('auth')->group( function() {
   Route::get('export', 'ProductController@export');
 });
 
-Route::get('/home', function () {
-    $data = [];
-    $data['version'] = '1.2.0';
-    return view('welcome', $data);
-});
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
