@@ -9,8 +9,7 @@ use Auth as Auth;
 
 class ContentsController extends Controller
 {
-    //
-    public function __construct( Product $product )
+    public function __construct(Product $product)
     {
         $this->product = $product;
     }
@@ -18,7 +17,7 @@ class ContentsController extends Controller
     public function home()
     {
         $data = [];
-        $data['products'] = $this->product->all()->where('stock' , '>',  0)->sortBy("name");
+        $data['products'] = $this->product->all()->where('stock', '>', 0)->sortBy("name");
         return view('contents/home', $data);
     }
 
@@ -26,7 +25,6 @@ class ContentsController extends Controller
     {
         $data = $this->product->find($product_id);
         $data->decrement('stock');
-        // dd($data);
         $data->save();
         $activity = new Activity;
         $activity->user_id = Auth::id();
@@ -37,6 +35,6 @@ class ContentsController extends Controller
 
     public function dashboard()
     {
-      return redirect('/');
+        return redirect('/');
     }
 }

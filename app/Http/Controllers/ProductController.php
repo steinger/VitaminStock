@@ -7,8 +7,7 @@ use App\Product as Product;
 
 class ProductController extends Controller
 {
-    //
-    public function __construct( Product $product )
+    public function __construct(Product $product)
     {
         $this->product = $product;
     }
@@ -29,7 +28,7 @@ class ProductController extends Controller
         return view('products/export', $data);
     }
 
-    public function newProduct( Request $request, Product $product )
+    public function newProduct(Request $request, Product $product)
     {
         $data = [];
 
@@ -37,9 +36,8 @@ class ProductController extends Controller
         $data['stock'] = $request->input('stock');
         $data['description'] = $request->input('description');
 
-        if( $request->isMethod('post') )
-        {
-          // dd($data);
+        if ($request->isMethod('post')) {
+            // dd($data);
             $this->validate(
                 $request,
                 [
@@ -59,7 +57,8 @@ class ProductController extends Controller
 
     public function show($product_id, Request $request)
     {
-        $data = []; $data['product_id'] = $product_id;
+        $data = [];
+        $data['product_id'] = $product_id;
         $data['modify'] = 1;
         $product_data = $this->product->find($product_id);
         $data['name'] = $product_data->name;
@@ -69,7 +68,7 @@ class ProductController extends Controller
         return view('products/form', $data);
     }
 
-    public function modify( Request $request, $product_id, Product $product )
+    public function modify(Request $request, $product_id, Product $product)
     {
         $data = [];
 
@@ -77,8 +76,7 @@ class ProductController extends Controller
         $data['stock'] = $request->input('stock');
         $data['description'] = $request->input('description');
 
-        if( $request->isMethod('post') )
-        {
+        if ($request->isMethod('post')) {
             // dd($data);
             $this->validate(
                 $request,

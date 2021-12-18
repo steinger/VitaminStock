@@ -11,8 +11,7 @@ use Carbon\Carbon;
 
 class ActivityController extends Controller
 {
-    //
-    public function __construct( Activity $activity, Product $product )
+    public function __construct(Activity $activity, Product $product)
     {
         $this->activity = $activity;
         $this->product = $product;
@@ -22,14 +21,13 @@ class ActivityController extends Controller
     {
         $data = [];
         $data = DB::table('activities')
-          ->select('activities.id','products.name','activities.created_at')
-          ->leftJoin('products', 'products.id', '=', 'activities.product_id')
-          ->orderByDesc('activities.created_at')
-          ->where('user_id',Auth::id())
-          ->offset(0)
-          ->limit(100)
-          ->get();
-        // dd($data);
+            ->select('activities.id', 'products.name', 'activities.created_at')
+            ->leftJoin('products', 'products.id', '=', 'activities.product_id')
+            ->orderByDesc('activities.created_at')
+            ->where('user_id', Auth::id())
+            ->offset(0)
+            ->limit(100)
+            ->get();
         return view('activity/index', ['activities' => $data]);
     }
 
@@ -47,39 +45,36 @@ class ActivityController extends Controller
 
     public function today()
     {
-      $data = [];
-      $data = DB::table('activities')
-        ->select(['products.name', DB::raw('count(activities.product_id) AS count'), DB::raw('MAX(activities.created_at) AS created_at')])
-        ->leftJoin('products', 'products.id', '=', 'activities.product_id')
-        ->groupBy('products.name')
-        ->orderBy('products.name')
-        ->where('user_id', Auth::id())
-        ->whereDate('activities.created_at', Carbon::today())
-        ->get();
-      // dd($data);
-      return view('activity/today', ['activities' => $data]);
+        $data = [];
+        $data = DB::table('activities')
+            ->select(['products.name', DB::raw('count(activities.product_id) AS count'), DB::raw('MAX(activities.created_at) AS created_at')])
+            ->leftJoin('products', 'products.id', '=', 'activities.product_id')
+            ->groupBy('products.name')
+            ->orderBy('products.name')
+            ->where('user_id', Auth::id())
+            ->whereDate('activities.created_at', Carbon::today())
+            ->get();
+        return view('activity/today', ['activities' => $data]);
     }
 
     public function overview()
     {
-      $data = [];
-      $data = DB::table('activities')
-        ->select(['products.id','products.name', DB::raw('count(activities.product_id) AS count'), DB::raw('MIN(activities.created_at) AS created_at'), DB::raw('MAX(activities.created_at) AS updated_at')])
-        ->leftJoin('products', 'products.id', '=', 'activities.product_id')
-        ->groupBy('products.name','products.id')
-        ->orderBy('products.name')
-        ->where('user_id',Auth::id())
-        ->get();
-      // dd($data);
-      return view('activity/overview', ['activities' => $data]);
+        $data = [];
+        $data = DB::table('activities')
+            ->select(['products.id', 'products.name', DB::raw('count(activities.product_id) AS count'), DB::raw('MIN(activities.created_at) AS created_at'), DB::raw('MAX(activities.created_at) AS updated_at')])
+            ->leftJoin('products', 'products.id', '=', 'activities.product_id')
+            ->groupBy('products.name', 'products.id')
+            ->orderBy('products.name')
+            ->where('user_id', Auth::id())
+            ->get();
+        return view('activity/overview', ['activities' => $data]);
     }
 
     public function list($id)
     {
-      $data = [];
-      $data = $this->activity->where('user_id', Auth::id())->where('product_id', $id)->orderByDesc('created_at')->offset(0)->limit(100)->get();
-      $product = $this->product->find($id);
-      // dd($data);
-      return view('activity/singlelist')->with(array('activities' => $data))->with('productname', $product->name);
+        $data = [];
+        $data = $this->activity->where('user_id', Auth::id())->where('product_id', $id)->orderByDesc('created_at')->offset(0)->limit(100)->get();
+        $product = $this->product->find($id);
+        return view('activity/singlelist')->with(array('activities' => $data))->with('productname', $product->name);
     }
 }
