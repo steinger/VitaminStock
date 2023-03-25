@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Activity as Activity;
-use App\Product as Product;
+use App\Models\Activity as Activity;
+use App\Models\Product as Product;
 use Auth as Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ActivityController extends Controller
 {

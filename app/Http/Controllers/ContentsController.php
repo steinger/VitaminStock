@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Product as Product;
-use App\Activity as Activity;
+use App\Models\Activity as Activity;
+use App\Models\Product as Product;
 use Auth as Auth;
 
 class ContentsController extends Controller
